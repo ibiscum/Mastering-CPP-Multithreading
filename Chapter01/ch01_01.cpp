@@ -4,14 +4,11 @@
 	Revision 0
 	
 	Features:
-			- 
 			
 	Notes:
-			- 
 			
 	2016/10/30, Maya Posch
 */
-
 
 #include <iostream>
 #include <thread>
@@ -21,21 +18,20 @@
 
 using namespace std;
 
-
 // --- Globals
 mutex values_mtx;
 mutex cout_mtx;
 vector<int> values;
 
-
-int randGen(const int& min, const int& max) {
+int randGen(const int& min, const int& max)
+{
     static thread_local mt19937 generator(hash<thread::id>()(this_thread::get_id()));
     uniform_int_distribution<int> distribution(min, max);
     return distribution(generator);
 }
 
-
-void threadFnc(int tid) {
+void threadFnc(int tid)
+{
 	// Calculate the result.
 	cout_mtx.lock();
 	cout << "Starting thread " << tid << ".\n";
@@ -57,8 +53,8 @@ void threadFnc(int tid) {
 	values_mtx.unlock();
 }
 
-
-int main() {
+int main()
+{
 	// Set global data in queue.
 	values.push_back(42);
 	
@@ -75,7 +71,6 @@ int main() {
 	
 	// Read the calculated values.
 	cout << "Input: " << values[0] << ", Result 1: " << values[1] << ", Result 2: " << values[2] << ", Result 3: " << values[3] << ", Result 4: " << values[4] << "\n";
-	
-	
-	return 1;
+
+	return 0;
 }

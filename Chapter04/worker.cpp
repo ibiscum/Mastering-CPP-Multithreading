@@ -23,8 +23,8 @@ using namespace std;
 
 
 // --- GET CONDITION ---
-void Worker::getCondition(condition_variable* &cv) {
-	cv = &(this)->cv;
+void Worker::getCondition(condition_variable* &Cv) {
+	Cv = &(this)->cv;
 }
 
 

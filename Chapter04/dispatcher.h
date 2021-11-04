@@ -35,7 +35,7 @@ class Dispatcher {
 	static vector<thread*> threads;
 	
 public:
-	static bool init(int workers);
+	static bool init(int workers_no);
 	static bool stop();
 	static void addRequest(AbstractRequest* request);
 	static bool addWorker(Worker* worker);

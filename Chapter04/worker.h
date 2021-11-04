@@ -27,7 +27,7 @@ class Worker {
 	condition_variable cv;
 	mutex mtx;
 	unique_lock<mutex> ulock;
-	AbstractRequest* request;
+	AbstractRequest* request{};
 	bool running;
 	bool ready;
 	
@@ -36,7 +36,7 @@ public:
 	void run();
 	void stop() { running = false; }
 	void setRequest(AbstractRequest* request) { this->request = request; ready = true; }
-	void getCondition(condition_variable* &cv);
+	void getCondition(condition_variable* &Cv);
 };
 
 #endif

@@ -1,5 +1,5 @@
 /*
-	abstractrequest.h - header file for the AbstractRequest class.
+	abstract_request.h - header file for the AbstractRequest class.
 	
 	Revision 0
 	

@@ -31,10 +31,10 @@ vector<thread*> Dispatcher::threads;
 
 // --- INIT ---
 // Start the number of requested worker threads.
-bool Dispatcher::init(int workers) {
-	thread* t = 0;
-	Worker* w = 0;
-	for (int i = 0; i < workers; ++i) {
+bool Dispatcher::init(int workers_no) {
+	thread* t = nullptr;
+	Worker* w = nullptr;
+	for (int i = 0; i < workers_no; ++i) {
 		w = new Worker;
 		allWorkers.push_back(w);
 		t = new thread(&Worker::run, w);
@@ -48,14 +48,14 @@ bool Dispatcher::init(int workers) {
 // --- STOP ---
 // Terminate the worker threads and clean up.
 bool Dispatcher::stop() {
-	for (int i = 0; i < allWorkers.size(); ++i) {
-		allWorkers[i]->stop();
+	for (auto & allWorker : allWorkers) {
+		allWorker->stop();
 	}
 	
 	cout << "Stopped workers.\n";
 	
-	for (int j = 0; j < threads.size(); ++j) {
-		threads[j]->join();
+	for (auto & thread : threads) {
+		thread->join();
 		
 		cout << "Joined threads.\n";
 	}

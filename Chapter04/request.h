@@ -27,14 +27,14 @@ typedef void (*logFunction)(string text);
 
 
 class Request : public AbstractRequest {
-	int value;
-	logFunction outFnc;
+	int value{};
+	logFunction outFnc{};
 	
 public:
-	void setValue(int value) { this->value = value; }
+	void setValue(int Value) override { this->value = Value; }
 	void setOutput(logFunction fnc) { outFnc = fnc; }
-	void process();
-	void finish();
+	void process() override;
+	void finish() override;
 };
 
 #endif
